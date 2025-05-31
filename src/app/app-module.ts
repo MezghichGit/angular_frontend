@@ -7,6 +7,7 @@ import { Contact } from './contact/contact';
 import { Home } from './home/home';
 import { ListProviders } from './list-providers/list-providers';
 import { AddProviderPipe } from './pipes/add-provider-pipe';
+import { provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -18,11 +19,12 @@ import { AddProviderPipe } from './pipes/add-provider-pipe';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
   ],
   providers: [
     provideBrowserGlobalErrorListeners(),
-    provideZonelessChangeDetection()
+    provideZonelessChangeDetection(),
+    provideHttpClient(withInterceptorsFromDi())
   ],
   bootstrap: [App]
 })
