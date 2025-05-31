@@ -6,13 +6,15 @@ import { App } from './app';
 import { Contact } from './contact/contact';
 import { Home } from './home/home';
 import { ListProviders } from './list-providers/list-providers';
+import { AddProviderPipe } from './pipes/add-provider-pipe';
 
 @NgModule({
   declarations: [
     App,
     Contact,
     Home,
-    ListProviders
+    ListProviders,
+    AddProviderPipe
   ],
   imports: [
     BrowserModule,
