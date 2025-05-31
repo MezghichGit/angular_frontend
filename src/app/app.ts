@@ -8,4 +8,5 @@ import { Component } from '@angular/core';
 })
 export class App {
   protected title = 'ams';
+  societe:string = "IT TEST";
 }
