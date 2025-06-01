@@ -26,13 +26,17 @@ export class ListProviders implements OnInit {
     );
   }
 
-  deleteProvider() {
+  deleteProvider(id:number) {
     alert("Provider Deleted")
   }
 
   updateProvider(id:number) {
     alert("Provider Updated")
      this.router.navigate(["/updateprovider",id]);
+  }
+
+  detailsProvider(id:number){
+    this.router.navigate(["/detailsprovider",id]);
   }
 
   addProvider() {

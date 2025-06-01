@@ -11,6 +11,7 @@ import { provideHttpClient, withInterceptorsFromDi } from '@angular/common/http'
 import { Navbar } from './navbar/navbar';
 import { AddProvider } from './add-provider/add-provider';
 import { UpdateProvider } from './update-provider/update-provider';
+import { DetailsProvider } from './details-provider/details-provider';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import { UpdateProvider } from './update-provider/update-provider';
     AddProviderPipe,
     Navbar,
     AddProvider,
-    UpdateProvider
+    UpdateProvider,
+    DetailsProvider
   ],
   imports: [
     BrowserModule,

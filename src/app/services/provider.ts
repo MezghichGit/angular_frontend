@@ -24,4 +24,8 @@ export class ProviderService {
   deleteProvider(){}
 
   updateProvider(){}
+
+  getProviderById(id:number):Observable<Provider>{
+     return this.http.get<Provider>(this.providerUrl+"/getById/"+id)
+  }
 }
