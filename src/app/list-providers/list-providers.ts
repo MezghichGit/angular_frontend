@@ -9,7 +9,6 @@ import { Provider } from '../Models';
   styleUrl: './list-providers.css'
 })
 export class ListProviders implements OnInit {
-logo:string="https://upload.wikimedia.org/wikipedia/commons/thumb/c/cf/Angular_full_color_logo.svg/1200px-Angular_full_color_logo.svg.png";
 providers: Provider[]=[];
 
   constructor(private providerService: ProviderService) {

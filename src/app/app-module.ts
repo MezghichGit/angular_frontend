@@ -1,4 +1,4 @@
-import { NgModule, provideBrowserGlobalErrorListeners, provideZonelessChangeDetection } from '@angular/core';
+import { NgModule, NO_ERRORS_SCHEMA, provideBrowserGlobalErrorListeners, provideZonelessChangeDetection } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing-module';
@@ -8,6 +8,8 @@ import { Home } from './home/home';
 import { ListProviders } from './list-providers/list-providers';
 import { AddProviderPipe } from './pipes/add-provider-pipe';
 import { provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
+import { Navbar } from './navbar/navbar';
+import { AddProvider } from './add-provider/add-provider';
 
 @NgModule({
   declarations: [
@@ -15,18 +17,23 @@ import { provideHttpClient, withInterceptorsFromDi } from '@angular/common/http'
     Contact,
     Home,
     ListProviders,
-    AddProviderPipe
+    AddProviderPipe,
+    Navbar,
+    AddProvider
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    
+
   ],
   providers: [
     provideBrowserGlobalErrorListeners(),
     provideZonelessChangeDetection(),
     provideHttpClient(withInterceptorsFromDi())
   ],
-  bootstrap: [App]
+  bootstrap: [App],
+  schemas: [
+    NO_ERRORS_SCHEMA
+  ]
 })
 export class AppModule { }
