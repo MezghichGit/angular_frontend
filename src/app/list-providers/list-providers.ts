@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ProviderService } from '../services/provider';
 import { Provider } from '../Models';
 import { Router } from '@angular/router';
-
+import { BehaviorSubject } from 'rxjs';
 @Component({
   selector: 'app-list-providers',
   standalone: false,
@@ -10,20 +10,24 @@ import { Router } from '@angular/router';
   styleUrl: './list-providers.css'
 })
 export class ListProviders implements OnInit {
-  providers: Provider[] = [];
+ providers$ = new BehaviorSubject<Provider[] | null>(null);
+  isLoading$ = new BehaviorSubject<boolean>(true);
 
   constructor(private providerService: ProviderService, private router: Router) {
     console.log("constructor")
   }
 
   ngOnInit(): void {
-    console.log("ngOnInit")
-    this.providerService.getAllProviders().subscribe(
-      data => {
-        this.providers = data
-        console.log(this.providers)
+    this.providerService.getAllProviders().subscribe({
+      next: (data) => {
+        this.providers$.next(data);
+        this.isLoading$.next(false);
+      },
+      error: (err) => {
+        console.error('Erreur récupération providers', err);
+        this.isLoading$.next(false);
       }
-    );
+    });
   }
 
   deleteProvider(id:number) {

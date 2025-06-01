@@ -1,15 +1,14 @@
-<h2 align="center">Détails fournisseur</h2>
+<ng-container *ngIf="isLoading$ | async; else dataBlock">
+  <div class="spinner-container">
+    <div class="spinner"></div>
+  </div>
+</ng-container>
 
-
-<!-- Spinner -->
-<div *ngIf="isLoading" class="spinner-container">
-  <div class="spinner"></div>
-</div>
-
-<!-- Affichage des données une fois chargées -->
-<div *ngIf="!isLoading">
-  <h3>ID provider : {{ id }}</h3>
-  <h2>Provider nom : {{ provider.nom }}</h2>
-  <h2>Provider email : {{ provider.email }}</h2>
-  <h2>Provider details : {{ provider.details }}</h2>
-</div>
+<ng-template #dataBlock>
+  <ng-container *ngIf="provider$ | async as provider">
+    <h3>ID provider : {{ id }}</h3>
+    <h2>Provider nom : {{ provider.nom }}</h2>
+    <h2>Provider email : {{ provider.email }}</h2>
+    <h2>Provider details : {{ provider.details }}</h2>
+  </ng-container>
+</ng-template>

@@ -1,22 +1,36 @@
 <h2 align="center">Liste des fournisseurs</h2>
 
+<!-- Bouton Ajouter -->
 <a class="btn btn-primary" style="margin-bottom: 1%" (click)="addProvider()">Ajouter</a>
-<table border="1" align="center" class="table">
-  <tr>
-    <th>Id</th>
-    <th>Nom</th>
-    <th>Email</th>
-    <th>Détails</th>
-    <th>Delete</th>
-    <th>Update</th>
-  </tr>
-  <tr *ngFor="let p of providers">
-    <td>{{p.id}}</td>
-    <td>{{p.nom}}</td>
-    <td>{{p.email}}</td>
-    <td><a class="btn btn-primary" (click)="detailsProvider(p.id)">Détails</a></td>
-    <td><a class="btn btn-danger" (click)="deleteProvider(p.id)">Supprimer</a></td>
-    <td><a class="btn btn-warning" (click)="updateProvider(p.id)">Modifier</a></td>
-  </tr>
-  
-</table>
+
+<!-- Spinner de chargement -->
+<div *ngIf="isLoading$ | async" class="spinner-container">
+  <div class="spinner"></div>
+</div>
+
+<!-- Affichage de la table quand les données sont prêtes -->
+<ng-container *ngIf="providers$ | async as providers">
+  <table *ngIf="providers.length > 0; else noProviders" border="1" align="center" class="table">
+    <tr>
+      <th>Id</th>
+      <th>Nom</th>
+      <th>Email</th>
+      <th>Détails</th>
+      <th>Delete</th>
+      <th>Update</th>
+    </tr>
+    <tr *ngFor="let p of providers">
+      <td>{{ p.id }}</td>
+      <td>{{ p.nom }}</td>
+      <td>{{ p.email }}</td>
+      <td><a class="btn btn-primary" (click)="detailsProvider(p.id)">Détails</a></td>
+      <td><a class="btn btn-danger" (click)="deleteProvider(p.id)">Supprimer</a></td>
+      <td><a class="btn btn-warning" (click)="updateProvider(p.id)">Modifier</a></td>
+    </tr>
+  </table>
+</ng-container>
+
+<!-- Message si aucun fournisseur trouvé -->
+<ng-template #noProviders>
+  <p style="text-align: center;">Aucun fournisseur trouvé.</p>
+</ng-template>
