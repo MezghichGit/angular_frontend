@@ -21,7 +21,9 @@ export class ProviderService {
 
   postProvider(){}
 
-  deleteProvider(){}
+  deleteProvider(id:number){
+     return this.http.delete(this.providerUrl+"/delete/"+id)
+  }
 
   updateProvider(){}
 

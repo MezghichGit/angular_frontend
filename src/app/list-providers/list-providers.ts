@@ -18,21 +18,26 @@ export class ListProviders implements OnInit {
   }
 
   ngOnInit(): void {
-    this.providerService.getAllProviders().subscribe({
-      next: (data) => {
-        this.providers$.next(data);
-        this.isLoading$.next(false);
-      },
-      error: (err) => {
-        console.error('Erreur récupération providers', err);
-        this.isLoading$.next(false);
-      }
-    });
+   this.refreshData();
   }
 
-  deleteProvider(id:number) {
-    alert("Provider Deleted")
+deleteProvider(id: number) {
+  const confirmed = window.confirm("Êtes-vous sûr de vouloir supprimer ce fournisseur ?");
+  if (!confirmed) {
+    return; // L'utilisateur a annulé
   }
+
+  this.providerService.deleteProvider(id).subscribe({
+    next: () => {
+      console.log("Fournisseur supprimé");
+      this.refreshData(); // recharge la liste
+    },
+    error: (err) => {
+      console.error("Erreur lors de la suppression :", err);
+    }
+  });
+}
+
 
   updateProvider(id:number) {
     alert("Provider Updated")
@@ -47,4 +52,16 @@ export class ListProviders implements OnInit {
     this.router.navigate(["/addprovider"]);
   }
 
+  refreshData(){
+     this.providerService.getAllProviders().subscribe({
+      next: (data) => {
+        this.providers$.next(data);
+        this.isLoading$.next(false);
+      },
+      error: (err) => {
+        console.error('Erreur récupération providers', err);
+        this.isLoading$.next(false);
+      }
+    });
+  }
 }
