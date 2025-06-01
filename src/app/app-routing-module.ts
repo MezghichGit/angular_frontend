@@ -3,20 +3,25 @@ import { RouterModule, Routes } from '@angular/router';
 import { AddProvider } from './add-provider/add-provider';
 import { ListProviders } from './list-providers/list-providers';
 import { Contact } from './contact/contact';
+import { UpdateProvider } from './update-provider/update-provider';
 
 const routes: Routes = [
   {
-    path:"addprovider",
-    component:AddProvider
+    path: "addprovider",
+    component: AddProvider
   },
   {
-    path:"listproviders",
-    component:ListProviders
+    path: "listproviders",
+    component: ListProviders
   },
   {
-    path:"contact",
-    component:Contact
-  }
+    path: "contact",
+    component: Contact
+  },
+  {
+    path: "updateprovider/:id",
+    component: UpdateProvider
+  },
 ];
 
 @NgModule({

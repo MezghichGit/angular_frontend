@@ -10,6 +10,7 @@ import { AddProviderPipe } from './pipes/add-provider-pipe';
 import { provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
 import { Navbar } from './navbar/navbar';
 import { AddProvider } from './add-provider/add-provider';
+import { UpdateProvider } from './update-provider/update-provider';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import { AddProvider } from './add-provider/add-provider';
     ListProviders,
     AddProviderPipe,
     Navbar,
-    AddProvider
+    AddProvider,
+    UpdateProvider
   ],
   imports: [
     BrowserModule,
