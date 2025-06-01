@@ -1,16 +1,27 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { environment } from '../../environments/environment.development';
+import { Provider } from '../Models';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
-export class Provider {
+export class ProviderService {
+
+  providerUrl =  environment.baseUrl+"providers";
 
   constructor(private http:HttpClient) { }
 
 
-  getAllProviders()
+  getAllProviders():Observable<Provider[]>
   {
-    return this.http.get("http://127.0.0.1:8081/api/providers/list")
+    return this.http.get<Provider[]>(this.providerUrl+"/list")
   }
+
+  postProvider(){}
+
+  deleteProvider(){}
+
+  updateProvider(){}
 }

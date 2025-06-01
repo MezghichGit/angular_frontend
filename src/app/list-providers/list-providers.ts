@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { Provider } from '../services/provider';
+import { ProviderService } from '../services/provider';
+import { Provider } from '../Models';
 
 @Component({
   selector: 'app-list-providers',
@@ -8,17 +9,16 @@ import { Provider } from '../services/provider';
   styleUrl: './list-providers.css'
 })
 export class ListProviders implements OnInit {
+logo:string="https://upload.wikimedia.org/wikipedia/commons/thumb/c/cf/Angular_full_color_logo.svg/1200px-Angular_full_color_logo.svg.png";
+providers: Provider[]=[];
 
-  logo:string="https://upload.wikimedia.org/wikipedia/commons/thumb/c/cf/Angular_full_color_logo.svg/1200px-Angular_full_color_logo.svg.png";
-  providers: any;
-
-  constructor(private provider: Provider) {
+  constructor(private providerService: ProviderService) {
     console.log("constructor")
   }
 
   ngOnInit(): void {
     console.log("ngOnInit")
-    this.provider.getAllProviders().subscribe(
+    this.providerService.getAllProviders().subscribe(
       data => {
         this.providers = data
         console.log(this.providers)
