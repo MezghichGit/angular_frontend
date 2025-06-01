@@ -40,8 +40,8 @@ deleteProvider(id: number) {
 
 
   updateProvider(id:number) {
-    alert("Provider Updated")
-     this.router.navigate(["/updateprovider",id]);
+   // alert("Provider Updated")
+    this.router.navigate(["/updateprovider",id]);
   }
 
   detailsProvider(id:number){

@@ -27,7 +27,9 @@ export class ProviderService {
      return this.http.delete(this.providerUrl+"/delete/"+id)
   }
 
-  updateProvider(){}
+  updateProvider(provider:Provider){
+    return this.http.put(this.providerUrl+"/update/"+provider.id, provider)
+  }
 
   getProviderById(id:number):Observable<Provider>{
      return this.http.get<Provider>(this.providerUrl+"/getById/"+id)
