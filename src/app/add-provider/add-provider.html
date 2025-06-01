@@ -1,1 +1,21 @@
 <h2 align="center">Ajouter nouveau fournisseur</h2>
+
+<form #myprovider="ngForm"  (ngSubmit)="addProvider(myprovider.value)">
+
+ <div class="form-group">
+    <label for="idProvider">ID</label>
+    <input type="number" name="id" class="form-control" ngModel id="idProvider" aria-describedby="emailHelp" placeholder="Taper un id">
+  </div>
+
+  <div class="form-group">
+    <label for="nomProvider">Nom</label>
+    <input type="text" name="nom" class="form-control" ngModel id="nomProvider" aria-describedby="emailHelp" placeholder="Enter nom">
+  </div>
+
+   <div class="form-group">
+    <label for="emailProvider">Email</label>
+    <input type="email" name="email" class="form-control" ngModel id="emailProvider" aria-describedby="emailHelp" placeholder="Enter email">
+  </div>
+  
+  <button type="submit" class="btn btn-primary">Submit</button>
+</form>

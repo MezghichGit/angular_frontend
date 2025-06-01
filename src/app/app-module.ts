@@ -12,6 +12,7 @@ import { Navbar } from './navbar/navbar';
 import { AddProvider } from './add-provider/add-provider';
 import { UpdateProvider } from './update-provider/update-provider';
 import { DetailsProvider } from './details-provider/details-provider';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -28,6 +29,7 @@ import { DetailsProvider } from './details-provider/details-provider';
   imports: [
     BrowserModule,
     AppRoutingModule,
+    FormsModule
 
   ],
   providers: [

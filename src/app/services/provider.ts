@@ -19,7 +19,9 @@ export class ProviderService {
     return this.http.get<Provider[]>(this.providerUrl+"/list")
   }
 
-  postProvider(){}
+  postProvider(provider:Provider){
+    return this.http.post(this.providerUrl+"/add", provider)
+  }
 
   deleteProvider(id:number){
      return this.http.delete(this.providerUrl+"/delete/"+id)
