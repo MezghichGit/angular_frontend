@@ -1,3 +1,30 @@
 <h2 align="center">Infos de contact</h2>
 
 <h4>Email : amine.mezghich&#64;gmail.com</h4>
+
+<form  [formGroup]="contactForm" >
+    <div>
+        <label>Objet</label>
+        <input formControlName="subject" class="form-control">
+    </div>
+
+    <div *ngIf="contactForm.get('subject')?.touched && contactForm.get('subject')!.hasError('required')" style="color: red;">
+          Subject is required
+       </div>
+      
+       <div *ngIf="contactForm.get('subject')?.touched && contactForm.get('subject')!.hasError('minlength')" style="color: red;">
+        Subject should be min 3 characters length
+     </div>
+
+     <div>
+        <label>Votre email</label>
+        <input formControlName="sender" class="form-control">
+    </div> 
+     <div>
+        <label>Message</label>
+        <textarea formControlName="message" class="form-control"></textarea>
+    </div> 
+      
+    <button class="btn btn-primary" type="submit" [disabled]="contactForm.invalid" (click)="saveContactMessage()">Envoyer</button>
+
+ </form>
