@@ -36,6 +36,10 @@ const routes: Routes = [
   {
     path: "listarticles",
     component: ListArticles
+  },
+  {
+    path: 'facturation',
+    loadChildren: () => import('./facturation/facturation-module').then(m => m.FacturationModule)
   }
 ];
 
