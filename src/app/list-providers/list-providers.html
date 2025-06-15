@@ -26,7 +26,10 @@
       <td>{{ p.nom }}</td>
       <td>{{ p.email }}</td>
       <td>{{ p.ville }}</td>
-      <td>{{ p.logo }}</td>
+      <td>
+        <!-- Affichage de l'image du logo -->
+        <img *ngIf="p.logo" [src]="getImageUrl(p.logo)" alt="Logo de {{ p.nom }}" width="50" height="50">
+      </td>
       <td><a class="btn btn-primary" (click)="detailsProvider(p.id)">Détails</a></td>
       <td><a class="btn btn-danger" (click)="deleteProvider(p.id)">Supprimer</a></td>
       <td><a class="btn btn-warning" (click)="updateProvider(p.id)">Modifier</a></td>

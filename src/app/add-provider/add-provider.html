@@ -17,5 +17,13 @@
     <input type="email" name="email" class="form-control" ngModel id="emailProvider" aria-describedby="emailHelp" placeholder="Enter email">
   </div>
   
+   <div class="form-group">
+    <label for="emailProvider">Ville</label>
+    <input type="email" name="ville" class="form-control" ngModel id="villeProvider" aria-describedby="emailHelp" placeholder="Enter ville">
+  </div>
+   <div class="form-group">
+        <label for="providerImage">Provider Logo </label>
+        <input ngModel name="providerImage" class="form-control" placeholder="Image" type="file" (change)="onFileChanged($event)">
+      </div>
   <button type="submit" class="btn btn-primary">Submit</button>
 </form>

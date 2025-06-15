@@ -19,7 +19,7 @@ export class ProviderService {
     return this.http.get<Provider[]>(this.providerUrl)
   }
 
-  postProvider(provider:Provider){
+  postProvider(provider:FormData){
     return this.http.post(this.providerUrl, provider)
   }
 

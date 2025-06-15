@@ -3,6 +3,7 @@ import { ProviderService } from '../services/provider';
 import { Provider } from '../Models';
 import { Router } from '@angular/router';
 import { BehaviorSubject } from 'rxjs';
+import { environment } from '../../environments/environment.development';
 @Component({
   selector: 'app-list-providers',
   standalone: false,
@@ -13,6 +14,8 @@ export class ListProviders implements OnInit {
  providers$ = new BehaviorSubject<Provider[] | null>(null);
   isLoading$ = new BehaviorSubject<boolean>(true);
 
+  
+
   constructor(private providerService: ProviderService, private router: Router) {
     console.log("constructor")
   }
@@ -21,6 +24,11 @@ export class ListProviders implements OnInit {
    this.refreshData();
   }
 
+  // Fonction pour obtenir l'URL complète de l'image
+  getImageUrl(imageName: string): string {
+    return `${environment.imageUrl}${imageName}`;
+  }
+  
 deleteProvider(id: number) {
   const confirmed = window.confirm("Êtes-vous sûr de vouloir supprimer ce fournisseur ?");
   if (!confirmed) {
