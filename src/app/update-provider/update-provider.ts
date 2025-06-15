@@ -14,6 +14,8 @@ export class UpdateProvider implements OnInit {
   nom:any;
   email:any;
   details:any;
+  ville:any;
+  logo:any
   temp:any;
 
   provider = new BehaviorSubject<Provider | null>(null);
@@ -46,7 +48,10 @@ export class UpdateProvider implements OnInit {
       id:this.id,
       nom:this.nom,
       email:this.email,
-      details:this.details
+      details:this.details,
+      ville:this.ville,
+      logo:this.logo
+
     }
     
 

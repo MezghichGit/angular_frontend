@@ -55,6 +55,7 @@ deleteProvider(id: number) {
   refreshData(){
      this.providerService.getAllProviders().subscribe({
       next: (data) => {
+        console.log(data)
         this.providers$.next(data);
         this.isLoading$.next(false);
       },
