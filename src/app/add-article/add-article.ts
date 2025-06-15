@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { ArticleService } from '../services/article';
 import { Router } from '@angular/router';
+import { ProviderService } from '../services/provider';
+import { Provider } from '../Models';
+import { BehaviorSubject } from 'rxjs';
 
 @Component({
   selector: 'app-add-article',
@@ -10,10 +13,13 @@ import { Router } from '@angular/router';
 })
 export class AddArticle implements OnInit {
 
-  constructor(private articleService: ArticleService, private router: Router) { }
+  providers$ = new BehaviorSubject<Provider[] | null>(null);
+  isLoading$ = new BehaviorSubject<boolean>(true);
+
+  constructor(private articleService: ArticleService, private router: Router,private providerService: ProviderService) { }
 
   ngOnInit(): void {
-    throw new Error('Method not implemented.');
+    this.loadProviders();
   }
 
   selectedFile!: File;
@@ -27,7 +33,7 @@ export class AddArticle implements OnInit {
 
   addArticle(articleData: any) {
     const article = new FormData();
-    article.append('photo', this.selectedFile, this.selectedFile.name);
+    article.append('imageFile', this.selectedFile, this.selectedFile.name);
     //provider.append('imageName',this.selectedFile.name);
     article.append('id', articleData.id);
     article.append('libelle', articleData.libelle);
@@ -44,5 +50,21 @@ export class AddArticle implements OnInit {
       }
     );
 
+  }
+
+
+
+    loadProviders(){
+     this.providerService.getAllProviders().subscribe({
+      next: (data) => {
+        console.log(data)
+        this.providers$.next(data);
+        this.isLoading$.next(false);
+      },
+      error: (err) => {
+        console.error('Erreur récupération providers', err);
+        this.isLoading$.next(false);
+      }
+    });
   }
 }

@@ -20,9 +20,9 @@
    <div class="form-group">
     <label for="providerArticle">Fournisseur(Provider)</label>
     <select name="provider" class="form-control" ngModel id="providerArticle" aria-describedby="emailHelp">
-      <option>Fournisseur 1</option>
-      <option>Fournisseur 2</option>
-      <option>Fournisseur 3</option>
+      <option>--</option>
+      <option *ngFor="let provider of providers$ | async " value="{{provider.id}}">{{provider.nom}}</option>
+    
     </select>
     </div>
 
