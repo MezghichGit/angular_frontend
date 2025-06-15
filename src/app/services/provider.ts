@@ -9,29 +9,29 @@ import { Observable } from 'rxjs';
 })
 export class ProviderService {
 
-  providerUrl =  environment.baseUrl+"providers";
+  providerUrl =  environment.baseUrl+"providers/";
 
   constructor(private http:HttpClient) { }
 
 
   getAllProviders():Observable<Provider[]>
   {
-    return this.http.get<Provider[]>(this.providerUrl+"/list")
+    return this.http.get<Provider[]>(this.providerUrl)
   }
 
   postProvider(provider:Provider){
-    return this.http.post(this.providerUrl+"/add", provider)
+    return this.http.post(this.providerUrl, provider)
   }
 
   deleteProvider(id:number){
-     return this.http.delete(this.providerUrl+"/delete/"+id)
+     return this.http.delete(this.providerUrl+id)
   }
 
   updateProvider(provider:Provider){
-    return this.http.put(this.providerUrl+"/update/"+provider.id, provider)
+    return this.http.put(this.providerUrl+provider.id, provider)
   }
 
   getProviderById(id:number):Observable<Provider>{
-     return this.http.get<Provider>(this.providerUrl+"/getById/"+id)
+     return this.http.get<Provider>(this.providerUrl+id)
   }
 }
