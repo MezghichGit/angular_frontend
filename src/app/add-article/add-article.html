@@ -1,0 +1,35 @@
+<h2 align="center">Ajouter nouvel article</h2>
+
+<form #myarticle="ngForm"  (ngSubmit)="addArticle(myarticle.value)">
+
+ <div class="form-group">
+    <label for="idArticle">ID</label>
+    <input type="number" name="id" class="form-control" ngModel id="idArticle" aria-describedby="emailHelp" placeholder="Taper un id">
+  </div>
+
+  <div class="form-group">
+    <label for="libelleArticle">Libelle</label>
+    <input type="text" name="libelle" class="form-control" ngModel id="libelleArticle" aria-describedby="emailHelp" placeholder="Enter libellé">
+  </div>
+
+   <div class="form-group">
+    <label for="prixArticle">Prix</label>
+    <input type="text" name="prix" class="form-control" ngModel id="prixArticle" aria-describedby="emailHelp" placeholder="Enter le prix">
+  </div>
+  
+   <div class="form-group">
+    <label for="providerArticle">Fournisseur(Provider)</label>
+    <select name="provider" class="form-control" ngModel id="providerArticle" aria-describedby="emailHelp">
+      <option>Fournisseur 1</option>
+      <option>Fournisseur 2</option>
+      <option>Fournisseur 3</option>
+    </select>
+    </div>
+
+   <div class="form-group">
+        <label for="providerImage">Photo de l'article</label>
+        <input ngModel name="providerImage" class="form-control" placeholder="Image" type="file" (change)="onFileChanged($event)">
+      </div>
+  <button type="submit" class="btn btn-primary">Submit</button>
+</form>
+

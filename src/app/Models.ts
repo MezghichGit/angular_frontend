@@ -6,3 +6,11 @@ export interface Provider{
     logo:string,
     ville:string
 }
+
+export interface Article{
+    id:number,
+    libelle:string,
+    prix:number,
+    photo:string,
+    provider:Provider
+}

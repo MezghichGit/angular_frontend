@@ -1,0 +1,43 @@
+<h2 align="center">Liste des articles</h2>
+
+<!-- Bouton Ajouter -->
+<a class="btn btn-primary" style="margin-bottom: 1%" (click)="addArticle()">Ajouter</a>
+
+<!-- Spinner de chargement -->
+<div *ngIf="isLoading$ | async" class="spinner-container">
+  <div class="spinner"></div>
+</div>
+
+<!-- Affichage de la table quand les données sont prêtes -->
+<ng-container *ngIf="articles$ | async as articles">
+  <table *ngIf="articles.length > 0; else noArticles" border="1" align="center" class="table">
+    <tr>
+      <th>Id</th>
+      <th>Libelle</th>
+      <th>Prix</th>
+      <th>Provider</th>
+      <th>Photo</th>
+      <th>Détails</th>
+      <th>Delete</th>
+      <th>Update</th>
+    </tr>
+    <tr *ngFor="let article of articles">
+      <td>{{ article.id }}</td>
+      <td>{{ article.libelle }}</td>
+      <td>{{ article.prix }}</td>
+      <td>{{ article.provider.nom }}</td>
+      <td>
+        <!-- Affichage de l'image du logo -->
+        <img *ngIf="article.photo" [src]="getImageUrl(article.photo)" alt="Photo de {{ article.photo }}" width="50" height="50">
+      </td>
+      <td><a class="btn btn-primary">Détails</a></td>
+      <td><a class="btn btn-danger">Supprimer</a></td>
+      <td><a class="btn btn-warning">Modifier</a></td>
+    </tr>
+  </table>
+</ng-container>
+
+<!-- Message si aucun fournisseur trouvé -->
+<ng-template #noArticles>
+  <p style="text-align: center;">Aucun article trouvé.</p>
+</ng-template>

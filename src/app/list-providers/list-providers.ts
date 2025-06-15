@@ -12,7 +12,7 @@ import { environment } from '../../environments/environment.development';
 })
 export class ListProviders implements OnInit {
  providers$ = new BehaviorSubject<Provider[] | null>(null);
-  isLoading$ = new BehaviorSubject<boolean>(true);
+isLoading$ = new BehaviorSubject<boolean>(true);
 
   
 

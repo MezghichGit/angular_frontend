@@ -13,6 +13,8 @@ import { AddProvider } from './add-provider/add-provider';
 import { UpdateProvider } from './update-provider/update-provider';
 import { DetailsProvider } from './details-provider/details-provider';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { ListArticles } from './list-articles/list-articles';
+import { AddArticle } from './add-article/add-article';
 
 @NgModule({
   declarations: [
@@ -24,7 +26,9 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     Navbar,
     AddProvider,
     UpdateProvider,
-    DetailsProvider
+    DetailsProvider,
+    ListArticles,
+    AddArticle
   ],
   imports: [
     BrowserModule,
