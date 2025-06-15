@@ -9,4 +9,10 @@ import { Component } from '@angular/core';
 export class App {
   protected title = 'ams';
   societe:string = "IT TEST";
+
+    processEvent(message :any) { 
+
+    alert("Message du fils est : " + message);
+  }
+
 }
